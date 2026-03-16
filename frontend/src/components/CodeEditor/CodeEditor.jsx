@@ -31,7 +31,7 @@ function CodeEditor({setData, setLoading}) {
       return
     }
     setLoading(true)
-    const res = await fetch("http://localhost:5000/api/check", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/check`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code: code, language: language })
