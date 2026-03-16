@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+.editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #1e1e1e;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  background: #252526;
+  border-bottom: 1px solid #1e1e1e;
+  flex-shrink: 0;
+}
+
+.active-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 16px;
+  background: #1e1e1e;
+  border-top: 2px solid #0078d4;
+  border-right: 1px solid #333333;
+}
+
+.tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e8bd5f;
+}
+
+.tab-filename {
+  font-size: 12px;
+  color: #cccccc;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.lang-select {
+  background: transparent;
+  border: none;
+  color: #858585;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-right: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.lang-select option {
+  background: #252526;
+  color: #cccccc;
+  text-transform: none;
+}
+
+.lang-select:focus {
+  outline: none;
+}
+
+.editor-area {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.review-btn-wrapper {
+  padding: 12px 16px;
+  background: #252526;
+  border-top: 1px solid #2a2a2a;
+  flex-shrink: 0;
+}
+
+.review-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: #0078d4;
+  border: none;
+  color: #ffffff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.review-btn:hover {
+  background: #005a9e;
+}

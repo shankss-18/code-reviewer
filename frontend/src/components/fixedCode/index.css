@@ -1,0 +1,13 @@
+
+.fixed-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+.fixed-editor-area {
+  height: 300px;  
+}
