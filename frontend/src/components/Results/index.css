@@ -49,3 +49,7 @@
   height: 100%;
   overflow: hidden;
 }
+.footer{
+    margin: 15px 0px;
+    padding: 10px;
+}

@@ -22,3 +22,7 @@
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: #555555;
 }
+
+.mbox {
+  padding: 20px;
+}

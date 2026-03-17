@@ -18,8 +18,11 @@ const Result = ({data, loading}) => {
     
     if (data === null) {
         return (
-        <div className="result-wrapper flex justify-center items-center">
-            <p className="text-md text-gray-500">No code to review</p>
+        <div className="result-wrapper flex flex-col justify-center items-center">
+            <p className="text-md text-gray-500 text-center">No code to review</p>
+            <div className="footer">
+                <p className="text-gray-500 text-xs text-center leading-relaxed cursor-pointer">Made by Shanks</p>
+            </div>
         </div>
     )
     }
@@ -30,83 +33,87 @@ const Result = ({data, loading}) => {
     const code = parsed.fixedCode || ""
 
     return (
-        <div className="result-wrapper">
+        <div className="result-wrapper flex flex-col justify-between">
 
-            {/*error box */}
-            <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setErrors(!errors)}>
-                <div className="flex items-center">
-                    <div className="h-[12px] w-[12px] bg-red-500 rounded-full"></div>
-                    <h2 className="text-sm mll">Errors</h2>
+            <div className="w-full">
+                {/*error box */}
+                <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setErrors(!errors)}>
+                    <div className="flex items-center">
+                        <div className="h-[12px] w-[12px] bg-red-500 rounded-full"></div>
+                        <h2 className="text-sm mll">Errors</h2>
+                    </div>
+                    <div className="flex items-center justify-center h-[24px] w-[24px] bg-[#421B1B] border border-[#6D1B1B] rounded-full">
+                        <p className="text-xs text-[#F87171]">{errorList.length}</p>
+                    </div>
                 </div>
-                <div className="flex items-center justify-center h-[24px] w-[24px] bg-[#421B1B] border border-[#6D1B1B] rounded-full">
-                    <p className="text-xs text-[#F87171]">{errorList.length}</p>
-                </div>
-            </div>
-            {errors && (
-                <div className="bg-[#141414] dbox">
-                    {errorList.map((err) => {
-                        return (
-                            <div className="bg-[#1A1010] border border-[#351414] errorsBox flex justify-start items-center w-full overflow-hidden">
-                                <div className="ml-2 w-full">
-                                    <div className="flex justify-between items-center headbox">
-                                        <h2 className="text-md text-[#DC6565] font-semibold">{err.errorName}</h2>
-                                        <p className="text-xs text-[#47474F]">line {err.line}</p>
+                {errors && (
+                    <div className="bg-[#141414] dbox">
+                        {errorList.map((err) => {
+                            return (
+                                <div className="bg-[#1A1010] border border-[#351414] errorsBox flex justify-start items-center w-full overflow-hidden">
+                                    <div className="ml-2 w-full">
+                                        <div className="flex justify-between items-center headbox">
+                                            <h2 className="text-md text-[#DC6565] font-semibold">{err.errorName}</h2>
+                                            <p className="text-xs text-[#47474F]">line {err.line}</p>
+                                        </div>
+                                        <p className="text-sm text-gray">{err.explanation}</p>
                                     </div>
-                                    <p className="text-sm text-gray">{err.explanation}</p>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            )}
+                            )
+                        })}
+                    </div>
+                )}
 
-            {/*suggestion box */}
+                {/*suggestion box */}
 
-            <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setSuggestion(!suggestion)}>
-                <div className="flex items-center">
-                    <div className="h-[12px] w-[12px] bg-[#FFDB04] rounded-full"></div>
-                    <h2 className="text-sm mll">Suggestions</h2>
+                <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setSuggestion(!suggestion)}>
+                    <div className="flex items-center">
+                        <div className="h-[12px] w-[12px] bg-[#FFDB04] rounded-full"></div>
+                        <h2 className="text-sm mll">Suggestions</h2>
+                    </div>
+                    <div className="flex items-center justify-center h-[24px] w-[24px] bg-[#3D2917] border border-[#613B13] rounded-full">
+                        <p className="text-xs text-[#FACC15]">{suggestionList.length}</p>
+                    </div>
                 </div>
-                <div className="flex items-center justify-center h-[24px] w-[24px] bg-[#3D2917] border border-[#613B13] rounded-full">
-                    <p className="text-xs text-[#FACC15]">{suggestionList.length}</p>
-                </div>
-            </div>
-            {suggestion && (
-                <div className="bg-[#141414] dbox">
-                    {suggestionList.map((sugg) => {
-                        return (
-                            <div className="bg-[#1A1800] border border-[#3D3200] suggesBox flex justify-start items-center w-full overflow-hidden">
-                                <div className="ml-2 w-full">
-                                    <div className="flex justify-between items-center headbox">
-                                        <h2 className="text-md text-[#FFE88A] font-semibold">{sugg.suggestionName}</h2>
-                                        <p className="text-xs text-[#47474F]">line {sugg.line}</p>
+                {suggestion && (
+                    <div className="bg-[#141414] dbox">
+                        {suggestionList.map((sugg) => {
+                            return (
+                                <div className="bg-[#1A1800] border border-[#3D3200] suggesBox flex justify-start items-center w-full overflow-hidden">
+                                    <div className="ml-2 w-full">
+                                        <div className="flex justify-between items-center headbox">
+                                            <h2 className="text-md text-[#FFE88A] font-semibold">{sugg.suggestionName}</h2>
+                                            <p className="text-xs text-[#47474F]">line {sugg.line}</p>
+                                        </div>
+                                        <p className="text-sm text-gray">{sugg.explanation}</p>
                                     </div>
-                                    <p className="text-sm text-gray">{sugg.explanation}</p>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            )}
+                            )
+                        })}
+                    </div>
+                )}
 
-            {/*correct code box */}
+                {/*correct code box */}
 
-            <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setCorrectCode(!correctCode)}>
-                <div className="flex items-center">
-                    <div className="h-[12px] w-[12px] bg-[#04FF04] rounded-full"></div>
-                    <h2 className="text-sm mll">Fixed Code</h2>
+                <div className="bg-[#1A1A1A] box flex justify-between items-center cursor-pointer" onClick={() => setCorrectCode(!correctCode)}>
+                    <div className="flex items-center">
+                        <div className="h-[12px] w-[12px] bg-[#04FF04] rounded-full"></div>
+                        <h2 className="text-sm mll">Fixed Code</h2>
+                    </div>
+                    <div className="flex items-center justify-center h-[28px] w-[60px] bg-[#17232D] border border-[#103C5F] rounded" onClick={() => {navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000)}}>
+                        <p className="text-xs text-[#0078D4]">{copied ? "Copied!" : "Copy"}</p>
+                    </div>
                 </div>
-                <div className="flex items-center justify-center h-[28px] w-[60px] bg-[#17232D] border border-[#103C5F] rounded" onClick={() => {navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000)}}>
-                    <p className="text-xs text-[#0078D4]">{copied ? "Copied!" : "Copy"}</p>
-                </div>
+                {correctCode && (
+                    <div className="bg-[#141414] dbox">
+                        <FixedCodeEditor code={code}/>
+                    </div>
+                )}
             </div>
-            {correctCode && (
-                <div className="bg-[#141414] dbox">
-                    <FixedCodeEditor code={code}/>
-                </div>
-            )}
 
-
+            <div className="footer">
+                <p className="text-gray-500 text-xs text-center leading-relaxed cursor-pointer">Made by Shanks</p>
+            </div>
 
         </div>
     )
